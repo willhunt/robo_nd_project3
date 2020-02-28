@@ -17,3 +17,6 @@ devel/
 
 # vscode settings
 .vscode/
+
+# Non necessary packages
+src_archive/
