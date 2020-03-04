@@ -32,4 +32,8 @@ $ source devel/setup.bash
 $ roslaunch my_robot amcl.launch
 ```
 
-
+#### Teleop
+If desired the teleop package can be run:
+```sh
+$ rosrun teleop_twist_keyboard teleop_twist_keyboard.py cmd_vel:=/myrobot_diff_drive_controller/cmd_vel
+```

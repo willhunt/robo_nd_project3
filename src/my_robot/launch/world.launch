@@ -5,7 +5,7 @@
     <!-- World File -->
     <env name="GAZEBO_MODEL_PATH" value="$(find my_robot)/models"/>
     <!-- <env name="GAZEBO_PLUGIN_PATH" value="$(find my_robot)/build"/> -->
-    <arg name="world_file" default="$(find my_robot)/worlds/home.world"/>
+    <arg name="world_file" default="$(find my_robot)/worlds/maze.world"/>
 
     <!-- Launch Gazebo World -->
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
@@ -17,11 +17,11 @@
 
     <!-- Robot pose -->
     <arg name="x" default="0"/>
-    <arg name="y" default="1"/>
+    <arg name="y" default="0"/>
     <arg name="z" default="0"/>
     <arg name="roll" default="0"/>
     <arg name="pitch" default="0"/>
-    <arg name="yaw" default="-1.57"/>
+    <arg name="yaw" default="0"/>
 
     <!-- Launch other relevant files-->
     <include file="$(find my_robot)/launch/robot_description.launch"/>

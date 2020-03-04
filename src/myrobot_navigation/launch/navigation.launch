@@ -1,0 +1,37 @@
+<launch>
+    <arg name="navmode" default="false"/>
+
+    <!-- Map server node name="map_server" -->
+    <arg name="map_file" default="$(find myrobot_navigation)/maps/maze_map.yaml"/>
+    <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+
+    <!-- AMCl node name="amcl" -->
+    <node name="amcl" pkg="amcl" type="amcl" output="screen">
+        <remap from="scan" to="scan" />
+        <rosparam file="$(find myrobot_navigation)/config/amcl_params.yaml" command="load" />
+    </node>
+    
+    <!-- Move base node name="move_base" -->
+    <group if="$(arg navmode)">
+        <node name="move_base" pkg="move_base" type="move_base" respawn="false" output="screen">
+
+            <remap from="cmd_vel" to="/myrobot_diff_drive_controller/cmd_vel" />
+            <remap from="odom" to="/myrobot_diff_drive_controller/odom" />
+
+            <param name="base_global_planner" value="navfn/NavfnROS" />
+            <param name="base_local_planner" value="base_local_planner/TrajectoryPlannerROS"/>
+            <rosparam file="$(find myrobot_navigation)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
+            <rosparam file="$(find myrobot_navigation)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
+            <rosparam file="$(find myrobot_navigation)/config/local_costmap_params.yaml" command="load" />
+            <rosparam file="$(find myrobot_navigation)/config/global_costmap_params.yaml" command="load" />
+            <rosparam file="$(find myrobot_navigation)/config/base_local_planner_params.yaml" command="load" />
+        </node>
+    </group>
+    <group unless="$(arg navmode)">
+        <node name="teleop" pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" output="screen">
+            <remap from="cmd_vel" to="/myrobot_diff_drive_controller/cmd_vel" />
+        </node>
+    </group>
+
+
+</launch>

@@ -185,6 +185,43 @@
         <dynamics damping="1.0" friction="${wheel_friction}"/>
     </joint>
 
+    <transmission name="front_left_wheel_transmission">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="front_left_wheel_joint">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="front_left_wheel_actuator">
+            <!-- <mechanicalReduction>7</mechanicalReduction> -->
+        </actuator>
+    </transmission>
+    <transmission name="front_right_wheel_transmission">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="front_right_wheel_joint">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="front_right_wheel_actuator">
+            <!-- <mechanicalReduction>7</mechanicalReduction> -->
+        </actuator>
+    </transmission>
+    <transmission name="back_left_wheel_transmission">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="back_left_wheel_joint">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="back_left_wheel_actuator">
+            <!-- <mechanicalReduction>7</mechanicalReduction> -->
+        </actuator>
+    </transmission>
+    <transmission name="back_right_wheel_transmission">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="back_right_wheel_joint">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="back_right_wheel_actuator">
+            <!-- <mechanicalReduction>7</mechanicalReduction> -->
+        </actuator>
+    </transmission>
+
     <!-- SENSORS - - - - - - - - -->
     <link name="camera">
         <inertial>

@@ -43,36 +43,20 @@
 			<static>true</static>
 			<pose>-2.386 -0.795 0 0 0 0</pose>
 		</include>
-		<!-- Arrangement of boxes in back room 
-    	<population name="obstacle_population1">
-			<model name="whirly_obstacle">
-				<include>
-					<uri>model://whirly_obstacle</uri>
-					<plugin name="spin_arm" filename="libspin_arm.so"/>
-				</include>
-			</model>
-			<pose>-2.37 4.89 0 0 0 0</pose>
-			<box>
-				<size>1 2 0.01</size>
-			</box>
-			<model_count>2</model_count>
-			<distribution>
-				<type>linear-y</type>
-			</distribution>
-		</population>-->
-		<include>
+
+		<!-- <include>
 			<name>obstacle1</name>
 			<uri>model://whirly_obstacle</uri>
 			<pose>0 -0.8 0 0 0 0</pose>
-			<!-- <plugin name="spin_arm" filename="libspin_arm.so"/> -->
+			<plugin name="spin_arm" filename="libspin_arm.so"/>
 		</include>
 		<include>
 			<name>obstacle2</name>
 			<uri>model://whirly_obstacle</uri>
 			<pose>-0.69 -2.45 0 0 0 0</pose>
-			<!-- <plugin name="spin_arm" filename="libspin_arm.so"/> -->
+			<plugin name="spin_arm" filename="libspin_arm.so"/>
 		</include>
-		<!-- <include>
+		<include>
 			<uri>model://my_ball</uri>
 			<pose>5 0 0 0 0 0</pose>
 		</include> -->
