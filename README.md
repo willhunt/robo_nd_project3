@@ -29,7 +29,7 @@ $ source devel/setup.bash
 
 #### Once the `robo_nd_project3` package has been built, you can launch using:
 ```sh
-$ roslaunch my_robot amcl.launch
+$ roslaunch myrobot_main main.launch
 ```
 
 #### Teleop

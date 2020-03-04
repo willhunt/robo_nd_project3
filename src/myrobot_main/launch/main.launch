@@ -3,7 +3,7 @@
     <arg name="debug" default="false"/>
 
     <!-- Robot and world -->
-    <include file="$(find my_robot)/launch/world.launch"/>
+    <include file="$(find myrobot_gazebo)/launch/world.launch"/>
 
     <!-- Drive controller -->
     <include file="$(find myrobot_control)/launch/control.launch"/>

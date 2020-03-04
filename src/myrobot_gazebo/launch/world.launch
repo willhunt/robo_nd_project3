@@ -3,9 +3,9 @@
 <launch>
 
     <!-- World File -->
-    <env name="GAZEBO_MODEL_PATH" value="$(find my_robot)/models"/>
-    <!-- <env name="GAZEBO_PLUGIN_PATH" value="$(find my_robot)/build"/> -->
-    <arg name="world_file" default="$(find my_robot)/worlds/maze.world"/>
+    <env name="GAZEBO_MODEL_PATH" value="$(find myrobot_gazebo)/models"/>
+    <!-- <env name="GAZEBO_PLUGIN_PATH" value="$(find myrobot_gazebo)/build"/> -->
+    <arg name="world_file" default="$(find myrobot_gazebo)/worlds/maze.world"/>
 
     <!-- Launch Gazebo World -->
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
@@ -24,14 +24,14 @@
     <arg name="yaw" default="0"/>
 
     <!-- Launch other relevant files-->
-    <include file="$(find my_robot)/launch/robot_description.launch"/>
+    <include file="$(find myrobot_gazebo)/launch/robot_description.launch"/>
 
     <!-- Find my robot Description-->
-    <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find my_robot)/urdf/my_robot.xacro'"/>
+    <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find myrobot_gazebo)/urdf/myrobot.xacro'"/>
 
     <!-- Spawn My Robot -->
     <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
-        args="-urdf -param robot_description -model my_robot 
+        args="-urdf -param robot_description -model myrobot 
         -x $(arg x) -y $(arg y) -z $(arg z)
         -R $(arg roll) -P $(arg pitch) -Y $(arg yaw)"/>
 
