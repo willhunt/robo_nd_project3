@@ -1,6 +1,11 @@
 <?xml version="1.0"?>
 <sdf version="1.4">
   	<world name="default">
+	  	<gui>
+			<camera name="view_camera">
+				<pose>0 0 30 0.0 1.57 1.57</pose>
+			</camera>
+		</gui>
 		<!-- <plugin name="welcome" filename="libwelcome.so"/> -->
 		<include>
 		  	<uri>model://ground_plane</uri>

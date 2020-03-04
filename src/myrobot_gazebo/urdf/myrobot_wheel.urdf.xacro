@@ -4,9 +4,10 @@
 	<xacro:macro name="myrobot_wheel" params="wheel_prefix *joint_pose">
 		<link name="${wheel_prefix}_wheel">
 			<inertial>
-				<mass value="2" />
-				<origin xyz="0.0 0.0 0.0" rpy="0 ${M_PI/2} ${M_PI/2}"/>
-				<inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
+				<mass value="1.5" />
+				<!-- <origin xyz="0.0 0.0 0.0" rpy="0 ${M_PI/2} ${M_PI/2}"/> -->
+				<origin xyz="0.0 0.0 0.0" rpy="0 0 0"/> 
+				<inertia ixx="0.15" ixy="0.0" ixz="0.0" iyy="0.15" iyz="0.0" izz="0.15"/>
 			</inertial>
 			<visual name="${wheel_prefix}_wheel_visual">
 				<origin xyz="0.0 0.0 0.0" rpy="0 ${M_PI/2} ${M_PI/2}"/>
@@ -35,8 +36,8 @@
 		</link>
 
 		<gazebo reference="${wheel_prefix}_wheel">
-			<mu1 value="1.0"/>
-			<mu2 value="1.0"/>
+			<mu1 value="1"/>
+			<mu2 value="1"/>
 			<kp value="10000000.0" />
 			<kd value="1.0" />
 			<fdir1 value="1 0 0"/>
