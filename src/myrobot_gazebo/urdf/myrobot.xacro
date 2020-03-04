@@ -5,7 +5,11 @@
     <!-- PLUGINS -->
     <xacro:include filename="$(find myrobot_gazebo)/urdf/myrobot.gazebo" />
 
+    <!-- SUB-COMPONENTS -->
+    <xacro:include filename="$(find myrobot_gazebo)/urdf/myrobot_wheel.urdf.xacro" />
+
     <!-- PROPERTIES -->
+    <xacro:property name="M_PI" value="3.14159"/>
     <xacro:property name="wheel_width" value="0.06" />
     <xacro:property name="wheel_rad" value="0.1" />
     <xacro:property name="wheel_forward_offset" value="0.13" />
@@ -45,182 +49,19 @@
     </link>
 
     <!-- WHEELS - - - - - - - - -->
-    <link name="front_left_wheel">
-        <visual name="front_left_wheel_visual">
-            <geometry>
-                <cylinder radius="${wheel_rad}" length="${wheel_width}"/>
-            </geometry>
-            <origin xyz="0.0 0.0 0.0" rpy="0 1.5707 1.5707"/>
-        </visual>
-        <collision name="front_left_wheel_collision">
-            <geometry>
-                <cylinder radius="${wheel_rad}" length="${wheel_width}"/>
-            </geometry>
-            <origin xyz="0.0 0.0 0.0" rpy="0 1.5707 1.5707"/>
-        </collision>
-        <inertial>
-            <origin xyz="0.0 0.0 0" rpy="0 1.5707 1.5707"/>
-            <mass value="5.0"/>
-            <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
-        </inertial>
-        <!-- Feature to see wheel rotating -->
-        <visual name='front_left_wheel_bump'>
-            <origin xyz="0.05 0.03 0.05" rpy=" 0 0 0"/>
-            <geometry>
-                <sphere radius="0.02"/>
-            </geometry>
-        </visual>
-    </link>
-    <link name="front_right_wheel">
-        <!-- <pose>0 0 0 0 1.5707 1.5707</pose> -->
-        <visual name="front_right_wheel_visual">
-            <geometry>
-                <cylinder radius="${wheel_rad}" length="${wheel_width}"/>
-            </geometry>
-            <origin xyz="0.0 0.0 0.0" rpy="0 1.5707 1.5707"/>
-        </visual>
-        <collision name="front_right_wheel_collision">
-            <geometry>
-                <cylinder radius="${wheel_rad}" length="${wheel_width}"/>
-            </geometry>
-            <origin xyz="0.0 0.0 0.0" rpy="0 1.5707 1.5707"/>
-        </collision>
-        <inertial>
-            <origin xyz="0.0 0.0 0" rpy="00 1.5707 1.5707"/>
-            <mass value="5.0"/>
-            <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
-        </inertial>
-        <!-- Feature to see wheel rotating -->
-        <visual name='front_right_wheel_bump'>
-            <origin xyz="0.05 -0.03 0.05" rpy=" 0 0 0"/>
-            <geometry>
-                <sphere radius="0.02"/>
-            </geometry>
-        </visual>
-    </link>
-    <link name="back_left_wheel">
-        <visual name="back_left_wheel_visual">
-            <geometry>
-                <cylinder radius="${wheel_rad}" length="${wheel_width}"/>
-            </geometry>
-            <origin xyz="0.0 0.0 0.0" rpy="0 1.5707 1.5707"/>
-        </visual>
-        <collision name="back_left_wheel_collision">
-            <geometry>
-                <cylinder radius="${wheel_rad}" length="${wheel_width}"/>
-            </geometry>
-            <origin xyz="0.0 0.0 0.0" rpy="0 1.5707 1.5707"/>
-        </collision>
-        <inertial>
-            <origin xyz="0.0 0.0 0" rpy="0 1.5707 1.5707"/>
-            <mass value="5.0"/>
-            <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
-        </inertial>
-        <!-- Feature to see wheel rotating -->
-        <visual name='back_right_wheel_bump'>
-            <origin xyz="0.05 0.03 0.05" rpy=" 0 0 0"/>
-            <geometry>
-                <sphere radius="0.02"/>
-            </geometry>
-        </visual>
-    </link>
-    <link name="back_right_wheel">
-        <!-- <pose>0 0 0 0 1.5707 1.5707</pose> -->
-        <visual name="back_right_wheel_visual">
-            <geometry>
-                <cylinder radius="${wheel_rad}" length="${wheel_width}"/>
-            </geometry>
-            <origin xyz="0.0 0.0 0.0" rpy="0 1.5707 1.5707"/>
-        </visual>
-        <collision name="back_right_wheel_collision">
-            <geometry>
-                <cylinder radius="${wheel_rad}" length="${wheel_width}"/>
-            </geometry>
-            <origin xyz="0.0 0.0 0.0" rpy="0 1.5707 1.5707"/>
-        </collision>
-        <inertial>
-            <origin xyz="0.0 0.0 0" rpy="00 1.5707 1.5707"/>
-            <mass value="5.0"/>
-            <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
-        </inertial>
-        <!-- Feature to see wheel rotating -->
-        <visual name='front_right_wheel_bump'>
-            <origin xyz="0.05 -0.03 0.05" rpy=" 0 0 0"/>
-            <geometry>
-                <sphere radius="0.02"/>
-            </geometry>
-        </visual>
-    </link>
-
-    <joint type="continuous" name="front_left_wheel_joint">
-        <origin xyz="${wheel_forward_offset} ${wheel_left_offset} 0" rpy="0 0 0"/>
-        <child link="front_left_wheel"/>
-        <parent link="chassis"/>
-        <axis xyz="0 1 0" rpy="0 0 0"/>
-        <limit effort="10000" velocity="1000"/>
-        <dynamics damping="1.0" friction="${wheel_friction}"/>
-    </joint>
-    <joint type="continuous" name="front_right_wheel_joint">
-        <origin xyz="${wheel_forward_offset} -${wheel_left_offset} 0" rpy="0 0 0"/>
-        <child link="front_right_wheel"/>
-        <parent link="chassis"/>
-        <axis xyz="0 1 0" rpy="0 0 0"/>
-        <limit effort="10000" velocity="1000"/>
-        <dynamics damping="1.0" friction="${wheel_friction}"/>
-    </joint>
-    <joint type="continuous" name="back_left_wheel_joint">
-        <origin xyz="-${wheel_forward_offset} ${wheel_left_offset} 0" rpy="0 0 0"/>
-        <child link="back_left_wheel"/>
-        <parent link="chassis"/>
-        <axis xyz="0 1 0" rpy="0 0 0"/>
-        <limit effort="10000" velocity="1000"/>
-        <dynamics damping="1.0" friction="${wheel_friction}"/>
-    </joint>
-    <joint type="continuous" name="back_right_wheel_joint">
-        <origin xyz="-${wheel_forward_offset} -${wheel_left_offset} 0" rpy="0 0 0"/>
-        <child link="back_right_wheel"/>
-        <parent link="chassis"/>
-        <axis xyz="0 1 0" rpy="0 0 0"/>
-        <limit effort="10000" velocity="1000"/>
-        <dynamics damping="1.0" friction="${wheel_friction}"/>
-    </joint>
-
-    <transmission name="front_left_wheel_transmission">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="front_left_wheel_joint">
-            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="front_left_wheel_actuator">
-            <!-- <mechanicalReduction>7</mechanicalReduction> -->
-        </actuator>
-    </transmission>
-    <transmission name="front_right_wheel_transmission">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="front_right_wheel_joint">
-            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="front_right_wheel_actuator">
-            <!-- <mechanicalReduction>7</mechanicalReduction> -->
-        </actuator>
-    </transmission>
-    <transmission name="back_left_wheel_transmission">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="back_left_wheel_joint">
-            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="back_left_wheel_actuator">
-            <!-- <mechanicalReduction>7</mechanicalReduction> -->
-        </actuator>
-    </transmission>
-    <transmission name="back_right_wheel_transmission">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="back_right_wheel_joint">
-            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="back_right_wheel_actuator">
-            <!-- <mechanicalReduction>7</mechanicalReduction> -->
-        </actuator>
-    </transmission>
+    <!-- Format from https://github.com/husky/husky/blob/melodic-devel/husky_description/urdf/husky.urdf.xacro -->
+    <xacro:myrobot_wheel wheel_prefix="front_left">
+        <origin xyz="${wheel_forward_offset} ${wheel_left_offset} 0" rpy="0 0 0" />
+    </xacro:myrobot_wheel>
+    <xacro:myrobot_wheel wheel_prefix="front_right">
+        <origin xyz="${wheel_forward_offset} -${wheel_left_offset} 0" rpy="0 0 0" />
+    </xacro:myrobot_wheel>
+    <xacro:myrobot_wheel wheel_prefix="back_left">
+        <origin xyz="-${wheel_forward_offset} ${wheel_left_offset} 0" rpy="0 0 0" />
+    </xacro:myrobot_wheel>
+    <xacro:myrobot_wheel wheel_prefix="back_right">
+        <origin xyz="-${wheel_forward_offset} -${wheel_left_offset} 0" rpy="0 0 0" />
+    </xacro:myrobot_wheel>
 
     <!-- SENSORS - - - - - - - - -->
     <link name="camera">
