@@ -27,7 +27,7 @@
     <include file="$(find myrobot_gazebo)/launch/robot_description.launch"/>
 
     <!-- Find my robot Description-->
-    <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find myrobot_gazebo)/urdf/myrobot.xacro'"/>
+    <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find myrobot_gazebo)/urdf/myrobot.urdf.xacro'"/>
 
     <!-- Spawn My Robot -->
     <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"

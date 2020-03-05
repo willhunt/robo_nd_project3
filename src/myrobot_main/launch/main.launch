@@ -1,12 +1,17 @@
 <launch>
     <!-- Args-->
     <arg name="debug" default="false"/>
+    <!-- Use drive controller (true) or gazebo skid steer plugin (false) -->
+    <arg name="use_drive_controller" default="true"/> 
 
     <!-- Robot and world -->
     <include file="$(find myrobot_gazebo)/launch/world.launch"/>
 
     <!-- Drive controller -->
-    <include file="$(find myrobot_control)/launch/control.launch"/>
+    <group if="$(arg use_drive_controller)">
+        <include file="$(find myrobot_control)/launch/control.launch"/>
+    </group>
+
 
     <!-- Navigation -->
     <include file="$(find myrobot_navigation)/launch/navigation.launch"/>
