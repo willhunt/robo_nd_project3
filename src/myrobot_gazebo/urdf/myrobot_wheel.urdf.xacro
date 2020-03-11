@@ -7,7 +7,7 @@
 				<mass value="1.5" />
 				<!-- <origin xyz="0.0 0.0 0.0" rpy="0 ${M_PI/2} ${M_PI/2}"/> -->
 				<origin xyz="0.0 0.0 0.0" rpy="0 0 0"/> 
-				<inertia ixx="0.15" ixy="0.0" ixz="0.0" iyy="0.15" iyz="0.0" izz="0.15"/>
+				<inertia ixx="0.005" ixy="0.0" ixz="0.0" iyy="0.005" iyz="0.0" izz="0.005"/>
 			</inertial>
 			<visual name="${wheel_prefix}_wheel_visual">
 				<origin xyz="0.0 0.0 0.0" rpy="0 ${M_PI/2} ${M_PI/2}"/>
