@@ -1,5 +1,5 @@
 <launch>
-    <arg name="navmode" default="false"/>
+    <arg name="navmode" default="true"/>
 
     <!-- Map server node name="map_server" -->
     <arg name="map_file" default="$(find myrobot_navigation)/maps/maze_map.yaml"/>
