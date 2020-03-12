@@ -39,7 +39,5 @@ $ rosrun teleop_twist_keyboard teleop_twist_keyboard.py cmd_vel:=/myrobot_diff_d
 ```
 
 ## Evidence of Localisation
-Teleoperated Localisation
-![](/media/localisation_teleop.gif)
-
-
+Teleoperated Localisation  
+<img src="/media/localisation_teleop1.gif" alt="localisation gif" width="250" height="250">
