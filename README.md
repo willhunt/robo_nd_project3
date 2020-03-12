@@ -1,12 +1,11 @@
 # Project 3, Where Am I?
 ## Udacity Robotics Software Engineer Nanodegree
-Where Am I? project of the Robotics Software Engineer Nanodegree program from Udacity.
+Where Am I? project for the Robotics Software Engineer Nanodegree program from Udacity.
 
 ## How to Launch the simulation?
 
-#### Clone the package in catkin_ws/src/
+#### Clone the package
 ```sh
-$ cd /home/<project folder>/
 $ git clone https://github.com/willhunt/robo_nd_project3.git robo_nd_project3
 ```
 
