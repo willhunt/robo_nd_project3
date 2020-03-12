@@ -6,6 +6,17 @@
 				<pose>0 0 30 0.0 1.57 1.57</pose>
 			</camera>
 		</gui>
+
+		<physics type="ode">
+			<ode>
+				<solver>
+					<type>quick</type>
+					<iters>50</iters>
+					<friction_model>cone_model</friction_model>
+				</solver>
+			</ode>
+		</physics>
+
 		<!-- <plugin name="welcome" filename="libwelcome.so"/> -->
 		<include>
 		  	<uri>model://ground_plane</uri>

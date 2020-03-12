@@ -1,13 +1,22 @@
 <?xml version="1.0"?>
 <sdf version="1.4">
   	<world name="default">
+
+	  	<physics type="ode">
+			<ode>
+				<solver>
+					<type>quick</type>
+					<iters>50</iters>
+					<friction_model>cone_model</friction_model>
+				</solver>
+			</ode>
+		</physics>
+
 		<!-- <plugin name="welcome" filename="libwelcome.so"/> -->
 		<include>
 		  	<uri>model://ground_plane</uri>
 		</include>
-		<!-- <include>
-		  	<uri>model://sun</uri>
-		</include> -->
+
 		<!-- Light Source - add manually to set direction-->
 		<light type="directional" name="sun_high">
 			<cast_shadows>true</cast_shadows>

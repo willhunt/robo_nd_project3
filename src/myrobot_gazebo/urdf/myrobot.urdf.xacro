@@ -9,15 +9,17 @@
     <!-- PROPERTIES -->
     <xacro:property name="M_PI" value="3.14159"/>
 
+    <xacro:property name="chassis_mass" value="15.0" />
     <xacro:property name="chassis_height" value="0.12" />
     <xacro:property name="chassis_length" value="0.4" />
-    <xacro:property name="chassis_width" value="0.25" />
+    <xacro:property name="chassis_width" value="0.2" />
 
+    <xacro:property name="wheel_mass" value="1.5" />
     <xacro:property name="wheel_width" value="0.06" />
     <xacro:property name="wheel_rad" value="0.1" />
     <xacro:property name="wheel_forward_offset" value="0.13" />
     <xacro:property name="wheel_left_offset" value="${chassis_width/2 + 0.05}" />
-    <xacro:property name="wheel_friction" value="0.3" />
+    <!-- <xacro:property name="wheel_friction" value="0.3" /> -->
 
     <xacro:property name="use_drive_controller" value="true" />
     
@@ -37,9 +39,14 @@
         <!-- <pose>0 0 0.1 0 0 0</pose> -->
 
         <inertial>
-            <mass value="15.0"/>
+            <mass value="${chassis_mass}"/>
             <origin xyz="0 0 0" rpy=" 0 0 0"/>
-            <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1" iyz="0" izz="0.1" />
+            <inertia    ixx="${1/12 * chassis_mass * (chassis_height**2 + chassis_width**2)}"
+                        ixy="0"
+                        ixz="0"
+                        iyy="${1/12 * chassis_mass * (chassis_height**2 + chassis_length**2)}"
+                        iyz="0"
+                        izz="${1/12 * chassis_mass * (chassis_length**2 + chassis_width**2)}" />
         </inertial>
 
         <collision name='collision'>

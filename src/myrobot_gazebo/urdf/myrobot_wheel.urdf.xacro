@@ -4,10 +4,15 @@
 	<xacro:macro name="myrobot_wheel" params="wheel_prefix *joint_pose">
 		<link name="${wheel_prefix}_wheel">
 			<inertial>
-				<mass value="1.5" />
+				<mass value="${wheel_mass}" />
 				<!-- <origin xyz="0.0 0.0 0.0" rpy="0 ${M_PI/2} ${M_PI/2}"/> -->
 				<origin xyz="0.0 0.0 0.0" rpy="0 0 0"/> 
-				<inertia ixx="0.005" ixy="0.0" ixz="0.0" iyy="0.005" iyz="0.0" izz="0.005"/>
+				<inertia 	ixx="${1/12 * wheel_mass * (3 * wheel_rad**2 + wheel_width**2)}" 
+							ixy="0.0"
+							ixz="0.0"
+							iyy="${0.5 * wheel_mass * wheel_rad**2}"
+							iyz="0.0"
+							izz="${1/12 * wheel_mass * (3 * wheel_rad**2 + wheel_width**2)}" />
 			</inertial>
 			<visual name="${wheel_prefix}_wheel_visual">
 				<origin xyz="0.0 0.0 0.0" rpy="0 ${M_PI/2} ${M_PI/2}"/>
@@ -24,10 +29,10 @@
             <!-- Feature to see wheel rotating -->
             <visual name='front_left_wheel_bump'>
 				<xacro:if value="${wheel_prefix.endswith('left')}">
-                	<origin xyz="0.05 0.03 0.05" rpy=" 0 0 0"/>
+                	<origin xyz="${wheel_rad/2} 0.02 ${wheel_rad/2}" rpy=" 0 0 0"/>
 				</xacro:if>
 				<xacro:unless value="${wheel_prefix.endswith('left')}">
-                	<origin xyz="0.05 -0.03 0.05" rpy=" 0 0 0"/>
+                	<origin xyz="${wheel_rad/2} -0.02 ${wheel_rad/2}" rpy=" 0 0 0"/>
 				</xacro:unless>
                 <geometry>
                     <sphere radius="0.02"/>
@@ -36,11 +41,11 @@
 		</link>
 
 		<gazebo reference="${wheel_prefix}_wheel">
-			<mu1 value="1"/>
-			<mu2 value="1"/>
-			<kp value="10000000.0" />
-			<kd value="1.0" />
-			<fdir1 value="1 0 0"/>
+			<mu1 value="0.9"/>
+			<mu2 value="0.9"/>
+			<kp value="1000000.0" />
+			<kd value="10.0" />
+			<!-- <fdir1 value="0 0 1"/> -->
 		</gazebo>
 
 		<joint name="${wheel_prefix}_wheel_joint" type="continuous">

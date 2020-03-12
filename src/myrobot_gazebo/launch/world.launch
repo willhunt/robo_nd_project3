@@ -4,7 +4,7 @@
 
     <!-- World File -->
     <env name="GAZEBO_MODEL_PATH" value="$(find myrobot_gazebo)/models"/>
-    <!-- <env name="GAZEBO_PLUGIN_PATH" value="$(find myrobot_gazebo)/build"/> -->
+    <!-- <env name="GAZEBO_PLUGIN_PATH" value="$(find myrobot_gazebo)../../build"/> -->
     <arg name="world_file" default="$(find myrobot_gazebo)/worlds/maze.world"/>
 
     <!-- Launch Gazebo World -->
