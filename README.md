@@ -6,12 +6,12 @@ Where Am I? project for the Robotics Software Engineer Nanodegree program from U
 
 #### Clone the package
 ```sh
+$ cd /home/<project folder>/ 
 $ git clone https://github.com/willhunt/robo_nd_project3.git robo_nd_project3
 ```
 
 #### Build the `robo_nd_project3` package
 ```sh
-$ cd /home/<project folder>/ 
 $ catkin_make
 ```
 
@@ -22,7 +22,6 @@ $ rosdep install --from-paths src --ignore-src -r -y
 
 #### After building the package, source your environment
 ```sh
-$ cd /home/<project folder>/
 $ source devel/setup.bash
 ```
 
