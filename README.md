@@ -39,5 +39,10 @@ $ rosrun teleop_twist_keyboard teleop_twist_keyboard.py cmd_vel:=/myrobot_diff_d
 ```
 
 ## Evidence of Localisation
-Teleoperated Localisation  
+#### Teleoperated Localisation  
+Localisation during teleoperation through rqt.  
 <img src="/media/localisation_teleop1.gif" alt="localisation gif" width="250" height="250">
+
+#### Naviagation Localisation
+Localisation during navigation to goal using move_base.  
+<img src="/media/localisation_nav1.gif" alt="localisation gif" width="250" height="250">
